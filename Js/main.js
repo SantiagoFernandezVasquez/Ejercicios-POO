@@ -1,11 +1,11 @@
-class Persona {
+class Animal {
     nombre;
     edad;
-    sexo;
-    constructor(nombre, edad, sexo) {
+    sonido;
+    constructor(nombre, edad, sonido) {
         this.nombre = nombre;
         this.edad = edad;
-        this.sexo = sexo;
+        this.sonido = sonido;
     }
     set setNombre(nombre){
         this.nombre = nombre;
@@ -19,56 +19,41 @@ class Persona {
     get getEdad(){
         return this.edad;
     }
-    set setSexo(sexo){
-        this.sexo = sexo;
+    set setSonido(sonido){
+        this.sonido = sonido;
     }
-    get getSexo(){
-        return this.sexo;
+    get getSonido(){
+        return this.sonido;
     }
-    saludar(){
-        return `Hola, mi nombre es ${this.nombre}, tengo ${this.edad} años por lo tanto ${Persona.esMayorDeEdad(this.getEdad)} y soy de sexo ${this.sexo}`;
-    }
-
-    static esMayorDeEdad(edad) {
-        if(edad <= 18) {
-            return "no soy mayor de edad";
-        }
-        else {
-            return "soy mayor de edad";
-        }
+    hacerSonido(){
+        return `El sonido del animal es ${this.sonido}`;
     }
 }
 
-let persona1 = new Persona("Juan", 25, "Masculino");
+let animal1 = new Animal("Perro", 5, "Guau");
 
 document.querySelector("#resultado").innerHTML = /*html*/`
-    <h1>Saludo: <span>${persona1.saludar()}</span></h1>
-    <h1>Nombre: <span>${persona1.getNombre}</span></h1>
-    <h1>Edad: <span>${persona1.getEdad}</span></h1>
-    <h1>Sexo: <span>${persona1.getSexo}</span></h1>
-    <h1>Es mayor de edad: <span>${Persona.esMayorDeEdad(persona1.getEdad)}</span></h1>
-`
+    <h1>Info Animal: <span>${animal1.hacerSonido()}</span></h1>`
 
-class Estudiante extends Persona {
-    carrera;
-    constructor(nombre, edad, sexo, carrera) {
-        super(nombre, edad, sexo);
-        this.carrera = carrera;
+class Perro extends Animal {
+    raza;
+    constructor(nombre, edad, sonido, raza) {
+        super(nombre, edad, sonido);
+        this.raza = raza;
     }
-    set setCarrera(carrera){
-        this.carrera = carrera;
+    set setraza(raza){
+        this.raza = raza;
     }
-    get getCarrera(){
-        return this.carrera;
+    get getraza(){
+        return this.raza;
     }
-    estudiar(){
-        return `${this.saludar()}, estoy estudiando ${this.carrera}`;
+    moverCola(){
+        return `${this.hacerSonido()} y está moviendo la cola`;
     }
 }
 
-let estudiante1 = new Estudiante("Juan", 25, "Masculino", "Ingeniería en Sistemas");
+let perro1 = new Perro("Perro", 5, "Guau", "Raza");
 
 document.querySelector("#estudiante").innerHTML = /*html*/`
-    <h1>Estudio: <span>${estudiante1.estudiar()}</span></h1>
-    <h1>Carrera: <span>${estudiante1.getCarrera}</span></h1>
+    <h1>Info Animal: <span>${perro1.moverCola()}</span></h1>
 `
